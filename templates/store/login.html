@@ -1,0 +1,68 @@
+{% extends 'store/main.html' %}
+
+{% block title %}
+    Login Page | {{block.super}}
+{% endblock title %}
+{% block content %}
+<form  method="post">
+    {% csrf_token %}
+    <div class="alert mb-3">
+        {% for message in messages  %}
+          
+       
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            
+       
+            
+         <div class="alert alert-success" role="alert">
+             {{message}}
+           </div>
+           {% endif %}
+           {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            
+       
+            
+           <div class="alert alert-warning" role="alert">
+               {{message}}
+             </div>
+             {% endif %}
+             {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+            
+       
+            
+             <div class="alert alert-info" role="alert">
+                 {{message}}
+               </div>
+               {% endif %}
+           {% endfor %}
+    </div>
+
+    <div class="imgcontainer">
+        {% load static %}
+      <img src="{% static 'image/user.png' %}" alt="Avatar" class="avatar">
+    </div>
+  
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="name" required>
+  
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+    
+
+     <div class="all clearfix">
+        <div class="left">
+            <button type="submit" class="button">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+        </div>
+  
+       
+     </div>
+    </div>
+  
+   
+  </form>
+  
+{% endblock content %}

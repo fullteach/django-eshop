@@ -1,0 +1,78 @@
+{% extends 'store/main.html' %}
+
+{% block title %}
+    Store Page | {{block.super}}
+{% endblock title %}
+    
+    {% block content %}
+       {% load static %}
+<div class="row">
+    {% for product in products %}
+      
+   
+    <div class="col-lg-4">
+        <img src="{{product.image.url}}" alt="" class="thumbnail">
+        <div class="box-element product">
+     <h6><strong>{{product.name}}</strong></h6>
+     <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add</button>
+     <a href="/product-detail/{{product.id}}" class="btn btn-outline-success">View</a>
+     <h4 style="display: inline-block;float:right">{{product.price}}$</h4>
+        </div>
+
+    </div>
+    {% endfor %}
+    
+
+</div>
+
+   <div class="pag">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if products.has_previous %}
+                
+          
+                
+            <li class="page-item">
+              <a class="page-link" href="?page={{products.previous_page_number}}" aria-label="Orqaga">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {% else %}
+               <li class="page-item">
+                <a class="page-link" href="{% url 'store' %}" aria-label="Barcha malumotlar shu">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+             </li>
+              {% endif %}
+            <li class="page-item active"><a class="page-link" href="?page={{products.number}}">{{products.number}}</a></li>
+        
+         
+            {% if products.has_next %}
+                
+            
+                
+             <li class="page-item">
+               <a class="page-link" href="?page={{products.next_page_number}}" aria-label="Oldinga">
+                 <span aria-hidden="true">&raquo;</span>
+               </a>
+            </li>
+               {% else %}
+               <li class="page-item">
+                <a class="page-link" href="{% url 'store' %}" aria-label="Barcha malumotlar shu">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+             </li>
+            {% endif %}
+        </ul>
+      </nav>
+
+   </div>
+   <style>
+       .pag{
+           display: flex;
+           justify-content: center;
+           margin-top: 10px;
+       }
+   </style>
+    {% endblock content %}
+        
