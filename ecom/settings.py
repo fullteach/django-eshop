@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#e$6s44g$%@%zf^1#ihkuk=v53zs8irlr4d=#qone6*iq$qt03
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['139.59.215.183']
 
 
 # Application definition
@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'eshopDB',
+        'USER': 'behzod',
+        'PASSWORD': 'behzod',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 # Oracle
@@ -120,8 +124,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
+import os
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATICFILES_DIRS=[
     BASE_DIR / "static"
