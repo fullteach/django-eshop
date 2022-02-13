@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#e$6s44g$%@%zf^1#ihkuk=v53zs8irlr4d=#qone6*iq$qt03'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =FALSE
+DEBUG = FALSE
 
 ALLOWED_HOSTS = ['139.59.215.183']
 
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'eshopDB',
+        'NAME': 'eshopdb',
         'USER': 'behzod',
         'PASSWORD': 'behzod',
         'HOST': 'localhost',
